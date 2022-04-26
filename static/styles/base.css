@@ -1,0 +1,58 @@
+#body{
+    padding: 20px 50px;
+    display: block;
+}
+#header{
+    background-color:rgb(190, 212, 252);
+    color: teal;
+    padding: 20px 100px;
+    min-height: 10px;
+    overflow: auto;
+}
+#title{
+    float: left;
+    width: 80%;
+    background-color:rgb(190, 212, 252);
+    color: teal;
+    font-size: 35px;
+    font-weight: 800;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#text{
+    color: teal;
+    font-size: 25px;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#text2{
+    color: black;
+    font-size: 17px;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#right-menu{
+    text-align: right;
+    float: right;
+    width: 20%;
+}
+button{
+    display: inline;
+    background-color: whitesmoke;
+    border: 3px solid black;
+    border-radius: 5px;
+    text-align: center;
+    margin: 20px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+button:hover{
+    background-color: bisque;
+}
+#img-table{
+    display: flex;
+    flex-wrap: wrap;
+}
+#img-table > *{
+    padding: 25px;
+    align-self: center;
+}

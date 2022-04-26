@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Add Tracker{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href={{ url_for('static',filename='styles/form.css') }}>
+{% endblock %}
+
+{% block heading %}
+    <p id="title">Add Your Custom Tracker</p>
+{% endblock %}
+
+{% block content %}
+
+<p>{{ message }}</p>
+
+<p id="text2">
+    When entering options - <br>
+    For Multiple Choice enter comma seperated words <br>
+    Eg. Happy,Sad,Angry <br>
+    For Numerical enter the unit <br>
+    Eg. 'Glasses' or 'Celcius' or 'Laps' <br>
+    For Bool enter positive and negative <br>
+    Eg. Work Done,Procrastinated <br>
+    For Time Duration leave the options blank <br>
+</p>
+
+<form method="POST">
+    <div>
+        <label>Tracker Name</label>
+        <input type="text" name="track_name" placeholder="Enter name of the Tracker" required>
+    </div>
+    <div>
+        <label>Tracker Description</label>
+        <input type="text" name="track_desc" placeholder="Enter description of the Tracker" required>
+    </div>
+    <div>
+        <label>Choose Type of Tracker</label>
+        <select name="track_type">
+            <option value="num">Numerical</option>
+            <option value="mcq">Multiple Choice</option>
+            <option value="time">Time Duration</option>
+            <option value="bool">Boolean</option>
+        </select>
+    </div>
+    <div>
+        <label>Options</label>
+        <input type="text" name="options" placeholder="Enter Your Customisations for the tracker, if any" >
+    </div>
+    <br>
+    <button action="submit">
+        DONE!
+    </button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+
+form{
+    font-size: 20px;
+    padding: 20px 0;
+    font-weight: 500;
+}
+button{
+    display: inline;
+    background-color: whitesmoke;
+    border: 3px solid black;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 20px;
+}
+button:hover{
+    background-color: bisque;
+}
+label{
+    display: block;
+    padding: 10px 0;
+}
+input, select{
+    display: block;
+    width: 35%;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    border: 2px solid cornflowerblue;
+    border-radius: 5px;
+}
+input:focus{
+    background-color: rgb(231, 252, 252);
+    border: 3px solid rgb(173, 197, 241);
+}

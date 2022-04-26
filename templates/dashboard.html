@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href={{ url_for('static',filename='styles/table.css') }}>
+{% endblock %}
+
+{% block heading %}
+    <p id="title">Hi {{ user.first_name }} {{ user.last_name }}!</p>
+{% endblock %}
+
+{% block content %}
+
+{% if tracks|length == 0 %}
+No Trackers Yet
+<br>
+{% else %}
+<table id="trackers-table">
+    <tr>
+        <th>Tracker Name</th>
+        <th>Last Log</th>
+        <th>Time</th>
+        <th colspan="3">Actions</th>
+    </tr>
+    {% for i in range(tracks|length) %}
+    <tr>
+    {% set track = tracks[i] %}
+    {% set log = logs[i] %}
+        <td>
+            <a href="tracker/{{track.track_id}}">{{ track.track_name }}</a>
+        </td>
+        <td>
+            {% if log != None %}
+            {% if track.track_type == 'num' %}
+            {{ log.info }} {{ track.options }}
+            {% elif track.track_type == 'mcq' %}
+            {{ log.info }}
+            {% elif track.track_type == 'time' %}
+            {{ log.info }}
+            {% elif track.track_type == 'bool' %}
+            {{ log.info }}
+            {% endif %}
+            {% endif %}
+        </td>
+        <td>
+            {% if log != None %}
+            {{ log.time|format_time }}
+            {% endif %}
+        </td>
+        <td>
+            <a href="edit_tracker/{{track.track_id}}">EDIT</a>
+        </td>
+        <td>
+            <a href="delete_tracker/{{track.track_id}}">DEL</a>
+        </td>
+        <td>
+            <a href="log/{{track.track_id}}">LOG</a>
+        </td>
+    {% endfor %}
+    </tr>
+</table>
+{% endif %}
+
+<button>
+<a href={{ url_for('add_tracker') }}>ADD TRACKER</a>
+</button>
+<button>
+<a href={{ url_for('logout') }}>LOGOUT</a>
+</button>
+
+{% endblock %}

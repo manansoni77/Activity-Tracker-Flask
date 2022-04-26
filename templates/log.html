@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href={{ url_for('static',filename='styles/form.css') }}>
+{% endblock %}
+
+{% block heading %}
+    <p id="title">Log an Activity</p>
+{% endblock %}
+
+{% block content %}
+
+<p>{{ message }}</p>
+
+{% if tracker.track_type=='num' %}
+<form method="POST">
+    <div>
+        <label>{{ units }}</label>
+        <input type="text" name="val" placeholder="Enter number of {{ units }}" required>
+    </div>
+    <div>
+        <label>Time of Action</label>
+        <input type="datetime-local" name="time" placeholder="Enter Time of Action" required>
+    </div>
+    <br>
+    <button action="submit">
+        ADD LOG
+    </button>
+</form>
+{% elif tracker.track_type=='mcq' %}
+<form method="POST">
+    <div>
+        <label>Choice</label>
+        <select name="val">
+            {% for option in options %}
+            <option value="{{ option }}">{{ option }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label>Time of Action</label>
+        <input type="datetime-local" name="time" placeholder="Enter Time of Action" required>
+    </div>
+    <br>
+    <button action="submit">
+        ADD LOG
+    </button>
+</form>
+{% elif tracker.track_type=='time' %}
+<form method="POST">
+    <div>
+        <label>Start</label>
+        <input type="datetime-local" name="start" placeholder="Enter Start Time of Action" required>
+    </div>
+    <div>
+        <label>End</label>
+        <input type="datetime-local" name="end" placeholder="Enter End Time of Action" required>
+    </div>
+    <br>
+    <button action="submit">
+        ADD LOG
+    </button>
+</form>
+{% elif tracker.track_type=='bool' %}
+<form method="POST">
+    <div>
+        <label>Yes or No</label>
+        <select name="val">
+            {% for option in options %}
+            <option value="{{ option }}">{{ option }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label>Time of Action</label>
+        <input type="datetime-local" name="time" placeholder="Enter Time of Action" required>
+    </div>
+    <br>
+    <button action="submit">
+        ADD LOG
+    </button>
+</form>
+{% endif %}
+
+<button>
+    <a href={{ url_for('tracker',track_id=tracker.track_id) }}>BACK TO TRACKER</a>
+</button>
+
+{% endblock %}

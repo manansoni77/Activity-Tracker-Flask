@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="'en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}DEFAULT TITLE{% endblock %}</title>
+        <link rel="stylesheet" href={{ url_for('static',filename='styles/common.css') }}>
+        <link rel="stylesheet" href={{ url_for('static',filename='styles/auth.css') }}>
+        <link rel="stylesheet" href={{ url_for('static',filename='styles/form.css') }}>
+    </head>
+    <body>
+        <div id="header">
+            <div id="title">
+                TrackSELF
+            </div>
+            <div id="right-menu">
+                <a href={{ url_for('login') }}>LOGIN</a>|<a href={{ url_for('signup') }}>SIGNUP</a>
+            </div>
+        </div>
+        <div id="body">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

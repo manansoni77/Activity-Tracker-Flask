@@ -1,0 +1,16 @@
+body{
+    background-color: blanchedalmond;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    text-decoration: none;
+    color: rgb(80, 80, 80);
+}
+p{
+    font-size: 22px;
+    color: rgb(184, 29, 29);
+    margin: 0px;
+}

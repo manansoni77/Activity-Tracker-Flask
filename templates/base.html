@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="'en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}DEFAULT TITLE{% endblock %}</title>
+        <link rel="stylesheet" href={{ url_for('static',filename='styles/common.css') }}>
+        <link rel="stylesheet" href={{ url_for('static',filename='styles/base.css') }}>
+        {% block styles %}
+        {% endblock %}
+    </head>
+    <body>
+        <div id="header">
+            <div id="title">
+                {% block heading %}
+                {% endblock %}
+            </div>
+            <div id="right-menu">
+                <a href={{ url_for('dashboard') }}>DASHBOARD</a>
+            </div>
+        </div>
+        <div id="body">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

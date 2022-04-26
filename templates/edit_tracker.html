@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href={{ url_for('static',filename='styles/form.css') }}>
+{% endblock %}
+
+{% block heading %}
+    <p id="title">Edit Your Tracker</p>
+{% endblock %}
+
+{% block content %}
+
+<p>{{ message }}</p>
+
+<form method="POST">
+    <div>
+        <label>Tracker Name</label>
+        <input type="text" name="track_name" value="{{ tracker.track_name }}" required>
+    </div>
+    <div>
+        <label>Tracker Description</label>
+        <input type="text" name="track_desc" value="{{ tracker.track_desc }}" required>
+    </div>
+    <div>
+        <label>Tracker Type</label>
+        <input type="text" name="track_type" value="{{ tracker.track_type }}" disabled>
+    </div>
+    <div>
+        <label>Options</label>
+        {% tracker.track_type=='num' %}
+        <input type="text" name="options" value="{{ tracker.options }}" >
+        {% else %}
+        <input type="text" name="options" value="{{ tracker.options }}" disabled>
+        {% endif %}
+    </div>
+    <br>
+    <button action="submit">
+        DONE!
+    </button>
+</form>
+
+<button>
+    <a href={{ url_for('dashboard') }}>BACK TO DASHBOARD</a>
+</button>
+
+{% endblock %}

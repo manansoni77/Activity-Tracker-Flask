@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href={{ url_for('static',filename='styles/table.css') }}>
+{% endblock %}
+
+{% block heading %}
+    <p id="title">{{ track.track_name }}</p>
+{% endblock %}
+
+{% block content %}
+
+<p id="text">{{ track.track_desc }}</p>
+
+<div id="img-table">
+    {% if logs|length == 0 %}
+    <p>No Activity Logged Yet</p>
+    <br>
+    {% else %}
+    <table id="logs-list">
+        <tr>
+            <th>
+                Value
+            </th>
+            <th>
+                Time
+            </th>
+            <th colspan="2">
+                Actions
+            </th>
+        </tr>
+        {% for log in logs %}
+        <tr>
+            <td>
+                {{ log.info }}
+            </td>
+            <td>
+                {{ log.time|format_time }}
+            </td>
+            <td>
+                <a href="/edit_log/{{ log.track_id }}/{{ log.time|format_time }}">EDIT</a>
+            </td>
+            <td>
+                <a href="/del_log/{{ log.track_id }}/{{ log.time|format_time }}">DEL</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+    <div>
+        {% if plot %}
+        <img src="/static/{{ track.track_id }}.png" >
+        {% else %}
+        <p>{{ plot_message }}</p>
+        {% endif %}
+    </div>
+    <div>
+        <button>
+            <a href={{ url_for('log', track_id=track.track_id) }}>ADD LOG</a>
+        </button>
+        <br>
+        <button>
+            <a href={{ url_for('getcsv', track_id=track.track_id) }}>GET LOGS AS CSV</a>
+        </button>
+    </div>
+</div>
+
+{% endblock %}
