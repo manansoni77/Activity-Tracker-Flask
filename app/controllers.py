@@ -1,4 +1,3 @@
-from click import option
 from flask import request, current_app as app, render_template, session, redirect, url_for, send_file
 from datetime import datetime, timedelta
 from app.models import credentials, user, trackers, logs, db
